@@ -1,0 +1,108 @@
+<h2>Edit User</h2>
+<div class="alert alert-danger" *ngIf="errorMessage">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	<strong>Error!</strong> {{errorMessage}}
+</div>
+
+<div class="container">
+	<form #form="ngForm" novalidate>
+		<div class="panel panel-primary">
+			<div class="panel-heading">User Edit</div>
+			<div class="panel-body">
+				<div class="form-horizontal">
+					<div class="row has-error">
+						<span id="error" class="help-block"></span>
+					</div>
+					<div class="form-group">
+						<label for="UserName" class="col-xs-3 col-sm-2 control-label">User Name:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #UserName="ngModel" name="UserName" type="text" class="form-control" placeholder="User Name or Email" [(ngModel)]="objUserData.UserName"
+							 readonly />
+						</div>
+					</div>
+					<div class="form-group" [class.has-error]="FirstName.touched && FirstName.invalid">
+						<label for="FirstName" class="col-xs-3 col-sm-2 control-label">First Name:<font color="red">*&nbsp;</font></label>
+						<div class="col-xs-9 col-sm-10">
+							<input #FirstName="ngModel" name="FirstName" type="text" class="form-control" placeholder="First Name" [(ngModel)]="objUserData.FirstName"
+							 required />
+							<div style="color:red" *ngIf="FirstName.touched && FirstName.invalid">
+								First Name is required.
+							</div>
+						</div>
+					</div>
+					<div class="form-group" [class.has-error]="LastName.touched && LastName.invalid">
+						<label for="LastName" class="col-xs-3 col-sm-2 control-label">Last Name:<font color="red">*&nbsp;</font></label>
+						<div class="col-xs-9 col-sm-10">
+							<input #LastName="ngModel" name="LastName" type="text" class="form-control" placeholder="First Name" [(ngModel)]="objUserData.LastName"
+							 required />
+							<div style="color:red" *ngIf="LastName.touched && LastName.invalid">
+								First Name is required.
+							</div>
+						</div>
+					</div>
+					<div class="form-group" [class.has-error]="Email.touched && Email.invalid">
+						<label for="Email" class="col-xs-3 col-sm-2 control-label">Email:<font color="red">*&nbsp;</font></label>
+						<div class="col-xs-9 col-sm-10">
+							<input #Email="ngModel" name="Email" type="email" class="form-control" placeholder="Email Address" [(ngModel)]="objUserData.Email"
+							 required />
+							<div style="color:red" *ngIf="Email.touched && Email.invalid">
+								Email address is required.
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="Address" class="col-xs-3 col-sm-2 control-label">Address:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #Address="ngModel" name="Address" type="text" class="form-control" placeholder="Address" [(ngModel)]="objUserData.Address"
+							/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="City" class="col-xs-3 col-sm-2 control-label">City:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #City="ngModel" name="City" type="text" class="form-control" placeholder="City" [(ngModel)]="objUserData.City" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="State" class="col-xs-3 col-sm-2 control-label">State:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #State="ngModel" name="State" type="text" class="form-control" placeholder="State" [(ngModel)]="objUserData.State"
+							/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="PostalCode" class="col-xs-3 col-sm-2 control-label">Postal Code:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #PostalCode="ngModel" name="PostalCode" type="text" class="form-control" placeholder="PostalCode" [(ngModel)]="objUserData.PostalCode"
+							/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="PhoneNumber" class="col-xs-3 col-sm-2 control-label">Phone Number:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #PhoneNumber="ngModel" name="PhoneNumber" type="text" class="form-control" placeholder="PhoneNumber" [(ngModel)]="objUserData.PhoneNumber"
+							/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="role" class="col-xs-3 col-sm-2 control-label">Application Roles</label>
+						<div class="col-xs-9 col-sm-10">
+							<div class="checkbox" id="role" *ngFor="let role of roles;let i=index">
+								<input type="checkbox" id="{{i}}" name="role{{i}}" [(ngModel)]="role.Checked">{{role.Name}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer clearfix">
+				<div class="pull-right">
+					<button class="btn btn-primary" (click)="updateUser()" [disabled]="form.invalid">Save</button>
+					<a class="btn btn-primary" (click)="gotoUsers()">Cancel</a>
+				</div>
+				<div class="pull-left">
+					<a class="btn btn-danger" type="submit" (click)="deleteUser(objUserData.Id)">Delete</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

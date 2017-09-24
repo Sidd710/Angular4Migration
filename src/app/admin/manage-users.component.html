@@ -1,0 +1,64 @@
+<div class="grid grid-pad">
+	<h1>Users List</h1>
+
+	<!-- Error Messages -->
+	<div class="alert alert-danger" *ngIf="errorMessage">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  		<strong>Error!</strong> {{errorMessage}}
+	</div>
+
+	<!-- Search Panel -->
+	<div class="row">
+		<div class="col-md-12">
+			
+		</div>
+	</div>
+	
+	<!-- Data Grid with Pagination -->
+	<div class="table-responsive" style="width: 100%;overflow: auto;"> <!-- To add horizontal scrollbar when table width is too big -->
+
+	<div *ngIf="isLoading">Loading...Please wait!</div>
+	<table class="table table-bordered table-striped table-condensed table-hover" *ngIf="!isLoading">
+		<!-- Grid Pagination -->
+        <caption>
+            <div class="row" style="padding:2px;margin:0px;border:1px solid lightgray;background-color:lightblue;">
+                <div class="col-md-12 text-left">
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group">
+                            <a class="btn-sm" routerLink="/admin/user/add" routerLinkActive="active" title="Add User"><i class="glyphicon glyphicon-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </caption>
+
+		<!-- Grid Column Header -->
+		<tr>
+			<th>Action</th>
+			<th>User Id</th>
+			<th>First Name</th>
+			<th>Last name</th>
+			<th>Email</th>
+			<th>Application Roles</th>
+		</tr>
+
+		<!-- Grid Rows -->
+		
+		<tbody>
+			<tr *ngFor="let item of UsersList">
+				<td style="width: 100px">
+					<a (click)="onSelect(item)">Edit</a>
+					<a (click)="deleteUser(item.UserName)">Delete</a>
+				</td>
+				<td class="text-left">{{item.UserName}}</td>
+				<td class="text-left">{{item.FirstName}}</td>
+				<td class="text-left">{{item.LastName}}</td>
+				<td class="text-left">{{item.Email}}</td>
+				<td class="text-left">{{item.Roles}}</td>
+			</tr>
+		</tbody>
+		
+	</table>
+	</div>
+</div>
+	

@@ -1,0 +1,75 @@
+<div class="container">
+	<h2>User Profile</h2>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Edit Profile
+		</div>
+		<div class="panel-body">
+			<form #form="ngForm" class="form-login" role="form">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label for="userName" class="control-label col-md-2">Username:</label>
+						<div class="col-md-10">
+							<input #userName="ngModel" name="userName" type="text" class="form-control" [(ngModel)]="objUserData.UserName" placeholder="Username"
+							 readonly />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-2">Email:</label>
+						<div class="col-md-10">
+							<input #email="ngModel" name="email" type="email" class="form-control" [(ngModel)]="objUserData.Email" placeholder="Email"
+							 required autofocus />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="firstName" class="control-label col-md-2">First Name:</label>
+						<div class="col-md-10">
+							<input #firstName="ngModel" name="firstName" type="text" class="form-control" [(ngModel)]="objUserData.FirstName" placeholder="First Name"
+							 required autofocus />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastName" class="control-label col-md-2">Last Name:</label>
+						<div class="col-md-10">
+							<input #lastName="ngModel" name="lastName" type="text" class="form-control" [(ngModel)]="objUserData.LastName" placeholder="Last Name"
+							 required autofocus />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="address" class="control-label col-md-2">Address:</label>
+						<div class="col-md-10">
+							<input #address="ngModel" name="address" type="text" class="form-control" [(ngModel)]="objUserData.Address" placeholder="Address"
+							/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="city" class="control-label col-md-2">City:</label>
+						<div class="col-md-10">
+							<input #city="ngModel" name="city" type="text" class="form-control" [(ngModel)]="objUserData.City" placeholder="City" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="state" class="control-label col-md-2">State:</label>
+						<div class="col-md-10">
+							<input #state="ngModel" name="state" type="text" class="form-control" [(ngModel)]="objUserData.State" placeholder="State"
+							/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="postalCode" class="control-label col-md-2">Postal Code:</label>
+						<div class="col-md-10">
+							<input #postalCode="ngModel" name="postalCode" type="text" class="form-control" [(ngModel)]="objUserData.PostalCode" placeholder="Postal Code"
+							/>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="panel-footer clearfix">
+			<div class="pull-right">
+				<button type="submit" value="Edit User" class="btn btn-primary" (click)="updateUser()"><span class="glyphicon glyphicon-floppy-disk"></span>Update Profile</button>				&nbsp;
+				<button value="Cancel" class="btn btn-primary" (click)="gotoDashboard()"><span class="glyphicon glyphicon-floppy-disk"></span> Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

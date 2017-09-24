@@ -1,0 +1,52 @@
+<h2>Edit Role</h2>
+<div class="alert alert-danger" *ngIf="errorMessage">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	<strong>Error!</strong> {{errorMessage}}
+</div>
+<div *ngIf="false">Is Form Valid: {{ form.valid}}</div>
+<div *ngIf="false">Form Value: {{ form.value | json}}</div>
+<div class="container">
+	<form #form="ngForm" novalidate>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Role Edit</div>
+			<div class="panel-body">
+				<div class="form-horizontal">
+					<div class="row has-error">
+						<span id="error" class="help-block"></span>
+					</div>
+
+					<div class="form-group" [class.has-error]="RoleName.touched && RoleName.invalid">
+						<label for="RoleName" class="col-xs-3 col-sm-2 control-label">Role Name:<font color="red">*&nbsp;</font></label>
+						<div class="col-xs-9 col-sm-10">
+							<input #RoleName="ngModel" name="RoleName" type="text" class="form-control" placeholder="Role Name" [(ngModel)]="objRoleData.Name"
+							 required />
+							<div style="color:red" *ngIf="RoleName.touched && RoleName.invalid">
+								Role Name is required.
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Description" class="col-xs-3 col-sm-2 control-label">Description:</label>
+						<div class="col-xs-9 col-sm-10">
+							<input #Description="ngModel" name="Description" type="text" class="form-control" placeholder="Role Description" [(ngModel)]="objRoleData.Description"
+							/>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="panel-footer clearfix">
+
+				<div class="pull-right">
+					<button class="btn btn-primary" (click)="updateRole()" [disabled]="form.invalid">Save</button>
+					<a class="btn btn-primary" (click)="gotoRoles()">Cancel</a>
+				</div>
+				<div class="pull-left">
+					<a class="btn btn-danger" type="submit" (click)="deleteRole(objRoleData.Id)">Delete</a>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>

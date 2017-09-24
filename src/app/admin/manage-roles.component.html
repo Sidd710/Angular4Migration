@@ -1,0 +1,50 @@
+<div class="grid grid-pad">
+	<h1>Roles List</h1>
+
+	<!-- Error Messages -->
+	<div class="alert alert-danger" *ngIf="errorMessage">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>Error!</strong> {{errorMessage}}
+	</div>
+
+	<!-- Data Grid with Pagination -->
+	<div class="table-responsive" style="width: 100%;overflow: auto;">
+		<!-- To add horizontal scrollbar when table width is too big -->
+
+		<div *ngIf="isLoading">Loading...Please wait!</div>
+		<table class="table table-bordered table-striped table-condensed table-hover" *ngIf="!isLoading">
+			<!-- Grid Pagination -->
+			<caption>
+				<div class="row" style="padding:2px;margin:0px;border:1px solid lightgray;background-color:lightblue;">
+					<div class="col-md-12 text-left">
+						<div class="btn-toolbar" role="toolbar">
+							<div class="btn-group">
+								<a class="btn-sm" routerLink="/admin/role/add" routerLinkActive="active" title="Add Role"><i class="glyphicon glyphicon-plus"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</caption>
+
+			<!-- Grid Column Header -->
+			<tr>
+				<th>Action</th>
+				<th>Role Name</th>
+				<th>Role Description</th>
+			</tr>
+
+			<!-- Grid Rows -->
+			<tbody>
+				<tr *ngFor="let item of RolesList">
+					<td style="width: 100px">
+						<a (click)="onSelect(item)">Edit</a>
+						<a (click)="deleteRole(item.Id)">Delete</a>
+					</td>
+					<td class="text-left">{{item.Name}}</td>
+					<td class="text-left">{{item.Description}}</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</div>
